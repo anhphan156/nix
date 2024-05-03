@@ -99,6 +99,12 @@ in
      nix-prefetch-github
   ];
 
+  fonts.fonts = with pkgs; [
+    nerdfonts
+    ankacoder
+    material-icons
+  ];
+
   environment.variables.EDITOR = "nvim";
 
   home-manager = {

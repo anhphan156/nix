@@ -1,6 +1,9 @@
 { config, pkgs, ... }:
 
 {
+    imports = [
+        ./shell/zsh.nix
+    ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "backspace";
@@ -17,7 +20,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -34,20 +37,19 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    pkgs.kitty
-    pkgs.cmatrix
-    pkgs.xorg.xbacklight
-    pkgs.rofi
-    pkgs.rofi-calc
-    pkgs.rofi-emoji
-    pkgs.fzf
-    pkgs.material-icons
-    pkgs.firefox
-    #pkgs.discord
-    pkgs.ankacoder
-    pkgs.font-manager
-    pkgs.pamixer
-    pkgs.ghc
+    kitty
+    cmatrix
+    xorg.xbacklight
+    rofi
+    rofi-calc
+    rofi-emoji
+    fzf
+    firefox
+    #discord
+    font-manager
+    pamixer
+    ghc
+    neofetch
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -97,19 +99,19 @@
     enable = true;
   };
 
-  programs.zsh ={
-    enable = true;
-    syntaxHighlighting.enable = true;
-    
-    shellAliases = {
-      
-    };
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "z" ];
-      theme = "robbyrussell";
-    };
-  };
+  #programs.zsh ={
+  #  enable = true;
+  #  syntaxHighlighting.enable = true;
+
+  #  shellAliases = {
+
+  #  };
+  #  oh-my-zsh = {
+  #    enable = true;
+  #    plugins = [ "git" "z" ];
+  #    theme = "robbyrussell";
+  #  };
+  #};
 
     programs.git = {
         enable = true;
